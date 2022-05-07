@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	/*test*/
 
 	const texture = new THREE.TextureLoader().load(
-		"./assets/TexturesCom_Metal_RedHotSteel_header.jpg"
+		"../assets/TexturesCom_Metal_RedHotSteel_header_1.webp"
 	);
 	const textureL = new THREE.TextureLoader().load(
-		"./assets/Lune.jpg"
+		"../assets/Lune_1.webp"
 	);
 	const textureC = new THREE.TextureLoader().load(
-		"./assets/ciel.jpg"
+		"../assets/ciel.jpg"
 	);
 
 	texture.wrapS = THREE.RepeatWrapping;
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	};
 	tick();
 	//Create a plane that receives shadows (but does not cast them)
-	const herbe = new THREE.TextureLoader().load("./assets/Grass0027_6_download600.jpg");
+	const herbe = new THREE.TextureLoader().load("../assets/Grass.webp");
 	const cubeplane = new THREE.BoxGeometry(150, 1, 150);
 	const material4 = new THREE.MeshBasicMaterial({});
 	const SolCube = new THREE.Mesh(
