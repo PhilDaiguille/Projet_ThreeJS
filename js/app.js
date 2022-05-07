@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	/*test*/
 
 	const texture = new THREE.TextureLoader().load(
-		"../assets/TexturesCom_Metal_RedHotSteel_header.jpg"
+		"./assets/TexturesCom_Metal_RedHotSteel_header.jpg"
 	);
 	const textureL = new THREE.TextureLoader().load(
-		"../assets/Lune.jpg"
+		"./assets/Lune.jpg"
 	);
 	const textureC = new THREE.TextureLoader().load(
-		"../assets/ciel.jpg"
+		"./assets/ciel.jpg"
 	);
 
 	texture.wrapS = THREE.RepeatWrapping;
@@ -84,14 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	let helper = new THREE.PointLightHelper(light);
 	scene.add(helper);
 
-	function updateLight() {
+	/* function updateLight() {
 		helper.update();
 	}
 	//Create a sphere that cast shadows (but does not receive them)
 	const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
 	const sphereMaterial = new THREE.MeshStandardMaterial({
 		color: 0x2c3e50,
-	});
+	}); */
 	//cube
 
 	const cubeGeometry = new THREE.BoxGeometry(10, 10, 10);
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	};
 	tick();
 	//Create a plane that receives shadows (but does not cast them)
-	const herbe = new THREE.TextureLoader().load("../assets/Grass0027_6_download600.jpg");
+	const herbe = new THREE.TextureLoader().load("./assets/Grass0027_6_download600.jpg");
 	const cubeplane = new THREE.BoxGeometry(150, 1, 150);
 	const material4 = new THREE.MeshBasicMaterial({});
 	const SolCube = new THREE.Mesh(
