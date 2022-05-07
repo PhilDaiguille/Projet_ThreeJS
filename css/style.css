@@ -44,6 +44,11 @@ header h1 a{
 	text-decoration: none;
 	font-size: 2rem;
 }
+canvas{
+	z-index: 998;
+	opacity:1;
+	background: red;
+}
 main{
 	position: static;
 	width: 100%;

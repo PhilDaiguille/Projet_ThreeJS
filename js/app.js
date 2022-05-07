@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	);
 
 	const renderer = new THREE.WebGLRenderer();
+	
 	const controls = new THREE.OrbitControls(camera, renderer.domElement);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
@@ -39,6 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	const texture = new THREE.TextureLoader().load(
 		"../assets/TexturesCom_Metal_RedHotSteel_header.jpg"
 	);
+	const textureL = new THREE.TextureLoader().load(
+		"../assets/Lune.jpg"
+	);
 
 	texture.wrapS = THREE.RepeatWrapping;
 	texture.wrapT = THREE.RepeatWrapping;
@@ -51,6 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	const sphere = new THREE.Mesh(geometry, material);
 	scene.add(sphere);
+
+	const geoL = new THREE.SphereGeometry(14, 64, 32);
+	const materialL = new THREE.MeshBasicMaterial({
+		map: textureL,
+	});
+	const sphereL = new THREE.Mesh(geoL, materialL);
+	scene.add(sphereL);
 
 	camera.position.z = 40;
 	/*Light/Shadow*/
@@ -76,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const sphereMaterial = new THREE.MeshStandardMaterial({
 		color: 0x2c3e50,
 	});
-
 	//cube
 
 	const cubeGeometry = new THREE.BoxGeometry(10, 10, 10);
@@ -113,6 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		//mesh.rotation.y = Math.sin(elapsedTime)
 		sphere.position.y = Math.sin(elapsedTime) * 100;
 		sphere.position.x = Math.cos(elapsedTime) * 100;
+
+		sphereL.position.y = Math.sin(elapsedTime) * -100;
+		sphereL.position.x = Math.cos(elapsedTime) * -100;
+
+		console.log(deltaTime);
 		//mesh.rotation.x = Math.cos(elapsedTime)
 
 		//update camera
@@ -154,13 +169,21 @@ document.addEventListener("DOMContentLoaded", () => {
 	planeMesh.rotation.x -= Math.PI / 2;
 	planeMesh.position.y += -30;
 	scene.add(planeMesh);
-
+	
+	
 	//Create a helper for the shadow camera (optional)
 
 	let animate = () => {
 		requestAnimationFrame(animate);
+		if (sphereL.position.y <= 0) {
+			scene.background = new THREE.Color( 0x87CEEB );
+		}	
+		else {
+			scene.background = new THREE.Color( 0x2c3e50 );
+		}
 		controls.update();
-		sphere.rotation.y += 0.001;
+		sphere.rotation.y += 0.01;
+		sphereL.rotation.y += 0.01;
 
 		renderer.render(scene, camera);
 	};
