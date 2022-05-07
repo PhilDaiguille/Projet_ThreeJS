@@ -43,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	const textureL = new THREE.TextureLoader().load(
 		"../assets/Lune.jpg"
 	);
+	const textureC = new THREE.TextureLoader().load(
+		"../assets/ciel.jpg"
+	);
 
 	texture.wrapS = THREE.RepeatWrapping;
 	texture.wrapT = THREE.RepeatWrapping;
@@ -55,7 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	const sphere = new THREE.Mesh(geometry, material);
 	scene.add(sphere);
-
+	const materialC = new THREE.MeshBasicMaterial({
+		map: textureC,
+	});
 	const geoL = new THREE.SphereGeometry(14, 64, 32);
 	const materialL = new THREE.MeshBasicMaterial({
 		map: textureL,
@@ -127,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		sphereL.position.y = Math.sin(elapsedTime) * -100;
 		sphereL.position.x = Math.cos(elapsedTime) * -100;
 
-		console.log(deltaTime);
 		//mesh.rotation.x = Math.cos(elapsedTime)
 
 		//update camera
